@@ -1,0 +1,61 @@
+group 'com.github.droibit.plugins.flutter.customtabs'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.github.droibit.plugins.flutter.customtabs'
+    }
+
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 19
+
+        vectorDrawables.useSupportLibrary = true
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    buildFeatures {
+        buildConfig false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dependencies {
+        implementation 'androidx.browser:browser:1.5.0'
+        implementation 'com.github.droibit:customtabslauncher:2.0.0'
+
+        testImplementation 'junit:junit:4.13.2'
+        testImplementation 'org.robolectric:robolectric:4.10.3'
+        testImplementation 'org.mockito:mockito-core:5.8.0'
+        testImplementation 'com.google.truth:truth:1.1.5'
+        testImplementation 'androidx.test.ext:truth:1.5.0'
+        testImplementation 'androidx.test.ext:junit:1.1.5'
+    }
+}
