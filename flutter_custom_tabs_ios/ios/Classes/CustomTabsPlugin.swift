@@ -14,6 +14,7 @@ public class CustomTabsPlugin: NSObject, FlutterPlugin, CustomTabsApi {
         self.launcher = launcher
     }
 
+
     func launchURL(
         _ urlString: String,
         prefersDeepLink: Bool,
